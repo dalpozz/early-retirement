@@ -1,6 +1,6 @@
 import streamlit as st
 import math
-from src.utils import get_gdp_data
+from utils import get_gdp_data
 
 # Set the title and favicon that appear in the Browser's tab bar.
 st.set_page_config(
