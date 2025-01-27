@@ -10,7 +10,7 @@ A simple Streamlit app showing the how much is needed for early retirement.
 
    ```
    $ pip install poetry
-   $ poetry install
+   $ poetry install --no-root
    ```
 
 2. Run the app

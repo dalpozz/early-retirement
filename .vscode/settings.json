@@ -1,0 +1,11 @@
+{
+    "python.testing.pytestArgs": [
+        "tests"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true,
+    "python.testing.autoTestDiscoverOnSaveEnabled": true,
+    "pythonTestExplorer.testFramework": "pytest",
+    "python.defaultInterpreterPath": "/Users/dalpozz/Library/Caches/pypoetry/virtualenvs/early-retirement-I9RVFH-O-py3.13",
+    "esbonio.sphinx.confDir": ""
+}

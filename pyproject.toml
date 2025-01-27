@@ -1,21 +1,19 @@
-[project]
+[tool.poetry]
 name = "early-retirement"
 version = "0.1.0"
 description = "Early Retirement simulation"
-authors = [{name = "Andrea Dal Pozzolo", email = "dalpozz@gmail.com"}]
+authors = ["Andrea Dal Pozollo <dalpozz@gmail.com>"]
 license = "Apache 2.0"
 repository = "https://github.com/dalpozz/early-retirement"
-
-# Keywords description https://python-poetry.org/docs/pyproject/#keywords
 keywords = ["streamlit", "fire", "early", "retirement"]
-
 readme = "README.md"
-requires-python = ">=3.13"
-dependencies = [
-    "pandas (>=2.2.3,<3.0.0)",
-    "streamlit (>=1.41.1,<2.0.0)"
-]
+include = ["src"]
 
+
+[tool.poetry.dependencies]
+python = ">=3.13"
+pandas = ">=2.2.3,<3.0.0"
+streamlit = ">=1.41.1,<2.0.0"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
