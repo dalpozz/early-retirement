@@ -1,0 +1,16 @@
+[project]
+name = "early-retirement"
+version = "0.1.0"
+description = "Early Retirement simulation"
+authors = [{name = "Andrea Dal Pozzolo",email = "dalpozz@gmail.com"}]
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "pandas (>=2.2.3,<3.0.0)",
+    "streamlit (>=1.41.1,<2.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
