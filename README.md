@@ -1,19 +1,20 @@
-# :earth_americas: GDP dashboard template
+# :earth_americas: Early Retirement dashboard
 
-A simple Streamlit app showing the GDP of different countries in the world.
+A simple Streamlit app showing the how much is needed for early retirement.
 
-[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://gdp-dashboard-template.streamlit.app/)
+[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://early-retirement.streamlit.app/)
 
 ### How to run it on your own machine
 
 1. Install the requirements
 
    ```
-   $ pip install -r requirements.txt
+   $ pip install poetry
+   $ poetry install
    ```
 
 2. Run the app
 
    ```
-   $ streamlit run streamlit_app.py
+   $ streamlit run src/app.py
    ```
