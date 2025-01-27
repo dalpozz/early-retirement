@@ -45,4 +45,3 @@ def get_gdp_data():
     gdp_df['Year'] = pd.to_numeric(gdp_df['Year'])
 
     return gdp_df
-

@@ -7,7 +7,6 @@ license = "Apache 2.0"
 repository = "https://github.com/dalpozz/early-retirement"
 keywords = ["streamlit", "fire", "early", "retirement"]
 readme = "README.md"
-include = ["src"]
 
 
 [tool.poetry.dependencies]
