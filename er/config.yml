@@ -1,1 +1,5 @@
 avg_salary: 38000
+min_contribution: 100
+max_contribution: 5000
+min_horizon: 5
+max_horizon: 35

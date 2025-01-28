@@ -516,6 +516,21 @@ files = [
 ]
 
 [[package]]
+name = "numpy-financial"
+version = "1.0.0"
+description = "Simple financial functions"
+optional = false
+python-versions = ">=3.5"
+groups = ["main"]
+files = [
+    {file = "numpy-financial-1.0.0.tar.gz", hash = "sha256:f84341bc62b2485d5604a73d5fac7e91975b4b9cd5f4a5a9cf608902ea00cb40"},
+    {file = "numpy_financial-1.0.0-py3-none-any.whl", hash = "sha256:bae534b357516f12258862d1f0181d911032d0467f215bfcd1c264b4da579047"},
+]
+
+[package.dependencies]
+numpy = ">=1.15"
+
+[[package]]
 name = "packaging"
 version = "24.2"
 description = "Core utilities for Python packages"
@@ -1269,4 +1284,4 @@ watchmedo = ["PyYAML (>=3.10)"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">3.11,<3.12"
-content-hash = "8b889da259dec0da6df477207ba847bb525d1f9a930350a689820be48eb3eb8d"
+content-hash = "bf22dc279e79a86abaada6502daa845bdcebe7e5a0317b0cf106a94f605c4cee"

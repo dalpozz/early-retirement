@@ -1,5 +1,6 @@
 import math
 
+import numpy_financial as npf
 import streamlit as st
 from er.utils import get_data
 
@@ -11,7 +12,7 @@ st.set_page_config(
 
 # -----------------------------------------------------------------------------
 
-df = get_data()
+cfg = get_data()
 
 # -----------------------------------------------------------------------------
 # Draw the actual page
@@ -29,74 +30,49 @@ But it's otherwise a great (and did I mention _free_?) source of data.
 ""
 ""
 
-min_value = df["Year"].min()
-max_value = df["Year"].max()
+
+min_value = cfg["min_horizon"]
+max_value = cfg["max_horizon"]
 
 from_year, to_year = st.slider(
-    "Which years are you interested in?",
+    "How many years do you have before retirment?",
     min_value=min_value,
     max_value=max_value,
     value=[min_value, max_value],
 )
 
-countries = df["Country Code"].unique()
+min_contr = cfg["min_contribution"]
+max_contr = cfg["max_contribution"]
 
-if not len(countries):
-    st.warning("Select at least one country")
-
-selected_countries = st.multiselect(
-    "Which countries would you like to view?", countries, ["DEU", "FRA", "GBR", "BRA", "MEX", "JPN"]
-)
 
 ""
 ""
 ""
 
-# Filter the data
-filtered_gdp_df = df[
-    (df["Country Code"].isin(selected_countries))
-    & (df["Year"] <= to_year)
-    & (from_year <= df["Year"])
-]
 
-st.header("GDP over time", divider="gray")
+st.header("Net worth over time", divider="gray")
 
 ""
 
-st.line_chart(
-    filtered_gdp_df,
-    x="Year",
-    y="GDP",
-    color="Country Code",
-)
+# st.line_chart(
+#     filtered_gdp_df,
+#     x="Year",
+#     y="GDP",
+#     color="Country Code",
+# )
 
 ""
 ""
 
 
-first_year = df[df["Year"] == from_year]
-last_year = df[df["Year"] == to_year]
+# Parameters
+rate = 0.05  # 5% annual interest rate
+nper = 10  # Number of years
+pmt = 1000  # Annual payment
+pv = 0  # No initial investment
 
-st.header(f"GDP in {to_year}", divider="gray")
+# Calculate future value
+future_value = npf.fv(rate, nper, pmt, pv)
 
-""
 
-cols = st.columns(4)
-
-for i, country in enumerate(selected_countries):
-    col = cols[i % len(cols)]
-
-    with col:
-        first_gdp = first_year[first_year["Country Code"] == country]["GDP"].iat[0] / 1000000000
-        last_gdp = last_year[last_year["Country Code"] == country]["GDP"].iat[0] / 1000000000
-
-        if math.isnan(first_gdp):
-            growth = "n/a"
-            delta_color = "off"
-        else:
-            growth = f"{last_gdp / first_gdp:,.2f}x"
-            delta_color = "normal"
-
-        st.metric(
-            label=f"{country} GDP", value=f"{last_gdp:,.0f}B", delta=growth, delta_color=delta_color
-        )
+st.header(f"FV in {to_year} is {future_value}", divider="gray")

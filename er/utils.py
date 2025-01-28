@@ -1,5 +1,6 @@
 from pathlib import Path
 
+import numpy as np
 import pandas as pd
 import yaml
 
@@ -23,6 +24,27 @@ def get_data():
     """Grab data."""
 
     DATA_FILENAME = Path(__file__).parent / "config.yml"
-    df = read_yaml_file(DATA_FILENAME)
+    cfg = read_yaml_file(DATA_FILENAME)
 
-    return df
+    return cfg
+
+
+def future_value_annuity(rate, nper, pmt):
+    """
+    Calculates the future value of an ordinary annuity.
+
+    Args:
+      rate: The interest rate per period.
+      nper: The total number of periods.
+      pmt: The periodic payment.
+
+    Returns:
+      The future value of the annuity.
+    """
+    return pmt * (((1 + rate) ** nper) - 1) / rate
+
+
+# Example usage:
+rate = 0.05  # 5% annual interest rate
+nper = 10  # Number of years
+pmt = 1000  # Annual payment
