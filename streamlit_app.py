@@ -48,6 +48,7 @@ month_contr = st.slider(
     min_value=min_contr,
     max_value=max_contr,
     value=avg_contr,
+    step=100,
 )
 
 savings = st.number_input("Enter your current saving:", min_value=0, max_value=10000000, step=1000)
