@@ -79,9 +79,9 @@ st.header(f"Retirement amount in {to_year} year is {format_Mk(future_value)}", d
 ""
 ""
 
-st.header("Net worth over time", divider="gray")
+# st.header("Net worth over time", divider="gray")
 
-""
+# ""
 
 # st.line_chart(
 #     filtered_gdp_df,
@@ -90,5 +90,5 @@ st.header("Net worth over time", divider="gray")
 #     color="Country Code",
 # )
 
-""
-""
+# ""
+# ""
