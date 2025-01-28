@@ -80,13 +80,15 @@ st.header(f"Retirement amount in {to_year} year is {format_Mk(future_value)}", d
 ""
 ""
 
-# Calculate monthly payment for a 30-year mortgage
-target_retirement = 50000
-fv = target_retirement / (interest / 100)
+yearly_exp = st.number_input(
+    "Enter your current yearly expenses:", min_value=0, max_value=100000, step=30000
+)
+
+fv = yearly_exp / (interest / 100)
 monthly_payment = -npf.pmt(rate, nper, pv, fv)
 
 st.header(
-    f"Monthly saving needed to have {format_Mk(target_retirement)} per year at retirement after {to_year} year is {round(monthly_payment)}",
+    f"Monthly saving needed to have {format_Mk(yearly_exp)} per year at retirement after {to_year} year is {round(monthly_payment)}",
     divider="gray",
 )
 
