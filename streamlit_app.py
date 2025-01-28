@@ -19,11 +19,9 @@ cfg = get_data()
 
 # Set the title that appears at the top of the page.
 """
-# :earth_americas: GDP dashboard
+# :earth_americas: ER dashboard
 
-Browse GDP data from the [World Bank Open Data](https://data.worldbank.org/) website. As you'll
-notice, the data only goes to 2022 right now, and datapoints for certain years are often missing.
-But it's otherwise a great (and did I mention _free_?) source of data.
+This website allows one to simulate how much money we can put asside with monthly investments.
 """
 
 # Add some spacing
@@ -34,15 +32,23 @@ But it's otherwise a great (and did I mention _free_?) source of data.
 min_value = cfg["min_horizon"]
 max_value = cfg["max_horizon"]
 
-from_year, to_year = st.slider(
+to_year = st.slider(
     "How many years do you have before retirment?",
     min_value=min_value,
     max_value=max_value,
-    value=[min_value, max_value],
+    value=20,
 )
 
 min_contr = cfg["min_contribution"]
 max_contr = cfg["max_contribution"]
+avg_contr = cfg["avg_contribution"]
+
+month_contr = st.slider(
+    "How much can you save monthly?",
+    min_value=min_contr,
+    max_value=max_contr,
+    value=avg_contr,
+)
 
 
 ""
@@ -66,9 +72,9 @@ st.header("Net worth over time", divider="gray")
 
 
 # Parameters
-rate = 0.05  # 5% annual interest rate
-nper = 10  # Number of years
-pmt = 1000  # Annual payment
+rate = 0.05 / 12
+nper = to_year * 12
+pmt = month_contr
 pv = 0  # No initial investment
 
 # Calculate future value
