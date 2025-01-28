@@ -1,5 +1,3 @@
-import math
-
 import numpy_financial as npf
 import streamlit as st
 from er.utils import format_Mk, get_data
@@ -101,17 +99,3 @@ st.header(
     f"Monthly saving needed to have {format_Mk(yearly_exp)} per year at retirement after {to_year} year is {round(monthly_payment)}",
     divider="gray",
 )
-
-# st.header("Net worth over time", divider="gray")
-
-# ""
-
-# st.line_chart(
-#     filtered_gdp_df,
-#     x="Year",
-#     y="GDP",
-#     color="Country Code",
-# )
-
-# ""
-# ""
