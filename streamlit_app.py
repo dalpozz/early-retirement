@@ -19,7 +19,7 @@ cfg = get_data()
 
 # Set the title that appears at the top of the page.
 """
-# :earth_americas: ER dashboard
+# :dollar: ER dashboard
 
 This website allows one to simulate how much money we can put asside with monthly investments.
 """
