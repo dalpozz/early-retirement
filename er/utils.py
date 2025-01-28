@@ -29,9 +29,9 @@ def get_data():
     return cfg
 
 
-def format_100k(number):
+def format_Mk(number):
     """
-    Formats a number with a separator for 100,000.
+    Formats a number with a separator for 100k or 1M
 
     Args:
       number: The number to format.
@@ -39,7 +39,9 @@ def format_100k(number):
     Returns:
       The formatted number string.
     """
+    if number >= 1000000:
+        return f"{number / 1000000:.3f}M"
     if number >= 100000:
-        return f"{number / 1000:.2f}k"  # Divide by 1000 and format with 2 decimal places
+        return f"{number / 1000:.2f}k"
     else:
         return str(number)
