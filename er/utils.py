@@ -1,5 +1,6 @@
-import pandas as pd
 from pathlib import Path
+
+import pandas as pd
 
 
 def get_gdp_data():
@@ -11,7 +12,7 @@ def get_gdp_data():
     """
 
     # Instead of a CSV on disk, you could read from an HTTP endpoint here too.
-    DATA_FILENAME = Path(__file__).parent/'data/gdp_data.csv'
+    DATA_FILENAME = Path(__file__).parent / "data/gdp_data.csv"
     raw_gdp_df = pd.read_csv(DATA_FILENAME)
 
     MIN_YEAR = 1960
@@ -35,13 +36,13 @@ def get_gdp_data():
     #
     # So let's pivot all those year-columns into two: Year and GDP
     gdp_df = raw_gdp_df.melt(
-        ['Country Code'],
+        ["Country Code"],
         [str(x) for x in range(MIN_YEAR, MAX_YEAR + 1)],
-        'Year',
-        'GDP',
+        "Year",
+        "GDP",
     )
 
     # Convert years from string to integers
-    gdp_df['Year'] = pd.to_numeric(gdp_df['Year'])
+    gdp_df["Year"] = pd.to_numeric(gdp_df["Year"])
 
     return gdp_df

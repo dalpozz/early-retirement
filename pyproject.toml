@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "early-retirement"
+name = "er"
 version = "0.1.0"
 description = "Early Retirement simulation"
 authors = ["Andrea Dal Pozollo <dalpozz@gmail.com>"]
