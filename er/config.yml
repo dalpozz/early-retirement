@@ -4,3 +4,5 @@ min_contribution: 100
 max_contribution: 5000
 min_horizon: 5
 max_horizon: 35
+avg_exp: 30000
+avg_saving: 10000

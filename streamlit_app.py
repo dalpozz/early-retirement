@@ -51,7 +51,13 @@ month_contr = st.slider(
     step=100,
 )
 
-savings = st.number_input("Enter your current saving:", min_value=0, max_value=10000000, step=1000)
+savings = st.number_input(
+    "Enter your current saving:",
+    min_value=0,
+    max_value=10000000,
+    value=cfg["avg_saving"],
+    step=1000,
+)
 
 interest = st.slider(
     "Yearly return on investment (%)",
@@ -81,7 +87,11 @@ st.header(f"Retirement amount in {to_year} year is {format_Mk(future_value)}", d
 ""
 
 yearly_exp = st.number_input(
-    "Enter your current yearly expenses:", min_value=0, max_value=100000, step=30000
+    "Enter your current yearly expenses:",
+    min_value=0,
+    max_value=100000,
+    value=cfg["avg_exp"],
+    step=1000,
 )
 
 fv = yearly_exp / (interest / 100)
