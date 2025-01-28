@@ -50,11 +50,34 @@ month_contr = st.slider(
     value=avg_contr,
 )
 
+savings = st.number_input("Enter your current saving:", min_value=0, max_value=10000000, step=1000)
+
+interest = st.slider(
+    "Yearly return on investment (%)",
+    min_value=1,
+    max_value=10,
+    value=4,
+)
 
 ""
 ""
 ""
 
+# Parameters
+rate = interest / 100 / 12
+nper = to_year * 12
+pmt = -month_contr
+pv = -savings
+
+# Calculate future value
+future_value = round(npf.fv(rate, nper, pmt, pv))
+
+
+st.header(f"Retirement amount in {to_year} year is {future_value}", divider="gray")
+
+""
+""
+""
 
 st.header("Net worth over time", divider="gray")
 
@@ -69,16 +92,3 @@ st.header("Net worth over time", divider="gray")
 
 ""
 ""
-
-
-# Parameters
-rate = 0.05 / 12
-nper = to_year * 12
-pmt = month_contr
-pv = 0  # No initial investment
-
-# Calculate future value
-future_value = npf.fv(rate, nper, pmt, pv)
-
-
-st.header(f"FV in {to_year} is {future_value}", divider="gray")
