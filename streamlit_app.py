@@ -2,7 +2,7 @@ import math
 
 import numpy_financial as npf
 import streamlit as st
-from er.utils import get_data
+from er.utils import format_100k, get_data
 
 # Set the title and favicon that appear in the Browser's tab bar.
 st.set_page_config(
@@ -73,7 +73,7 @@ pv = -savings
 future_value = round(npf.fv(rate, nper, pmt, pv))
 
 
-st.header(f"Retirement amount in {to_year} year is {future_value}", divider="gray")
+st.header(f"Retirement amount in {to_year} year is {format_100k(future_value)}", divider="gray")
 
 ""
 ""

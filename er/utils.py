@@ -29,22 +29,17 @@ def get_data():
     return cfg
 
 
-def future_value_annuity(rate, nper, pmt):
+def format_100k(number):
     """
-    Calculates the future value of an ordinary annuity.
+    Formats a number with a separator for 100,000.
 
     Args:
-      rate: The interest rate per period.
-      nper: The total number of periods.
-      pmt: The periodic payment.
+      number: The number to format.
 
     Returns:
-      The future value of the annuity.
+      The formatted number string.
     """
-    return pmt * (((1 + rate) ** nper) - 1) / rate
-
-
-# Example usage:
-rate = 0.05  # 5% annual interest rate
-nper = 10  # Number of years
-pmt = 1000  # Annual payment
+    if number >= 100000:
+        return f"{number / 1000:.2f}k"  # Divide by 1000 and format with 2 decimal places
+    else:
+        return str(number)
