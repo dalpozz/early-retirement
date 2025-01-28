@@ -1,7 +1,7 @@
 import math
 
 import streamlit as st
-from er.utils import get_gdp_data
+from er.utils import get_data
 
 # Set the title and favicon that appear in the Browser's tab bar.
 st.set_page_config(
@@ -11,7 +11,7 @@ st.set_page_config(
 
 # -----------------------------------------------------------------------------
 
-gdp_df = get_gdp_data()
+df = get_data()
 
 # -----------------------------------------------------------------------------
 # Draw the actual page
@@ -29,8 +29,8 @@ But it's otherwise a great (and did I mention _free_?) source of data.
 ""
 ""
 
-min_value = gdp_df["Year"].min()
-max_value = gdp_df["Year"].max()
+min_value = df["Year"].min()
+max_value = df["Year"].max()
 
 from_year, to_year = st.slider(
     "Which years are you interested in?",
@@ -39,7 +39,7 @@ from_year, to_year = st.slider(
     value=[min_value, max_value],
 )
 
-countries = gdp_df["Country Code"].unique()
+countries = df["Country Code"].unique()
 
 if not len(countries):
     st.warning("Select at least one country")
@@ -53,10 +53,10 @@ selected_countries = st.multiselect(
 ""
 
 # Filter the data
-filtered_gdp_df = gdp_df[
-    (gdp_df["Country Code"].isin(selected_countries))
-    & (gdp_df["Year"] <= to_year)
-    & (from_year <= gdp_df["Year"])
+filtered_gdp_df = df[
+    (df["Country Code"].isin(selected_countries))
+    & (df["Year"] <= to_year)
+    & (from_year <= df["Year"])
 ]
 
 st.header("GDP over time", divider="gray")
@@ -74,8 +74,8 @@ st.line_chart(
 ""
 
 
-first_year = gdp_df[gdp_df["Year"] == from_year]
-last_year = gdp_df[gdp_df["Year"] == to_year]
+first_year = df[df["Year"] == from_year]
+last_year = df[df["Year"] == to_year]
 
 st.header(f"GDP in {to_year}", divider="gray")
 
